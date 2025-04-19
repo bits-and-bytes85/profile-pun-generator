@@ -24,14 +24,10 @@
       border-radius: 10px;
       box-shadow: 0 0 15px #39ff14;
       transition: all 0.2s ease-in-out;
-      cursor: pointer;
       min-height: 100px;
       margin: 20px auto;
-    }
-
-    .joke-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 25px #39ff14;
+      word-wrap: break-word;
+      white-space: normal;
     }
 
     .subtitle {
@@ -41,11 +37,10 @@
     }
 
     .typing {
-      display: block;
+      display: inline-block;
       border-right: 2px solid #39ff14;
-      white-space: nowrap;
-      overflow: hidden;
       animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+      overflow: hidden;
     }
 
     @keyframes typing {
@@ -60,8 +55,8 @@
   </style>
 </head>
 <body>
-  <div class="joke-box" onclick="showJoke()">
-    <span id="joke" class="typing">Click to see a computer science joke 💾</span>
+  <div class="joke-box">
+    <span id="joke" class="typing"></span>
   </div>
   <div class="subtitle">vintage vibes edition</div>
 
@@ -74,16 +69,13 @@
       "There are only 10 types of people in the world: Those who understand binary and those who don’t."
     ];
 
-    function showJoke() {
+    window.onload = () => {
       const jokeElement = document.getElementById('joke');
       const randomIndex = Math.floor(Math.random() * jokes.length);
       const newJoke = jokes[randomIndex];
 
-      jokeElement.classList.remove('typing');
-      void jokeElement.offsetWidth;
       jokeElement.textContent = newJoke;
-      jokeElement.classList.add('typing');
-    }
+    };
   </script>
 </body>
 </html>
