@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CS Joke Generator</title>
   <style>
+    :root {
+      color-scheme: dark;
+    }
+
     body {
-      background-color: #0d0d0d;
+      background-color: transparent;
       color: #39ff14;
       font-family: 'Courier New', monospace;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
       text-align: center;
     }
@@ -27,6 +26,7 @@
       transition: all 0.2s ease-in-out;
       cursor: pointer;
       min-height: 100px;
+      margin: 20px auto;
     }
 
     .joke-box:hover {
@@ -35,13 +35,13 @@
     }
 
     .subtitle {
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 14px;
       color: #888;
     }
 
     .typing {
-      display: inline-block;
+      display: block;
       border-right: 2px solid #39ff14;
       white-space: nowrap;
       overflow: hidden;
@@ -61,7 +61,7 @@
 </head>
 <body>
   <div class="joke-box" onclick="showJoke()">
-    <div id="joke" class="typing">Click to see a computer science joke 💾</div>
+    <span id="joke" class="typing">Click to see a computer science joke 💾</span>
   </div>
   <div class="subtitle">vintage vibes edition</div>
 
@@ -80,7 +80,7 @@
       const newJoke = jokes[randomIndex];
 
       jokeElement.classList.remove('typing');
-      void jokeElement.offsetWidth; 
+      void jokeElement.offsetWidth;
       jokeElement.textContent = newJoke;
       jokeElement.classList.add('typing');
     }
