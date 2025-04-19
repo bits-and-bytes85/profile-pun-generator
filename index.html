@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS Joke Generator</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #39ff14;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .joke-box {
+      border: 2px solid #39ff14;
+      padding: 30px;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #39ff14;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      min-height: 100px;
+    }
+
+    .joke-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 25px #39ff14;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .typing {
+      display: inline-block;
+      border-right: 2px solid #39ff14;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #39ff14 }
+    }
+  </style>
+</head>
+<body>
+  <div class="joke-box" onclick="showJoke()">
+    <div id="joke" class="typing">Click to see a computer science joke 💾</div>
+  </div>
+  <div class="subtitle">vintage vibes edition</div>
+
+  <script>
+    const jokes = [
+      "Why do programmers prefer dark mode? Because light attracts bugs.",
+      "Why do Java developers wear glasses? Because they can't C#.",
+      "I told my computer I needed a break… It said 'No problem' and crashed.",
+      "What's the object-oriented way to become wealthy? Inheritance.",
+      "There are only 10 types of people in the world: Those who understand binary and those who don’t."
+    ];
+
+    function showJoke() {
+      const jokeElement = document.getElementById('joke');
+      const randomIndex = Math.floor(Math.random() * jokes.length);
+      const newJoke = jokes[randomIndex];
+
+      jokeElement.classList.remove('typing');
+      void jokeElement.offsetWidth; 
+      jokeElement.textContent = newJoke;
+      jokeElement.classList.add('typing');
+    }
+  </script>
+</body>
+</html>
